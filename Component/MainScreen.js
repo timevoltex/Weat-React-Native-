@@ -2,6 +2,7 @@ import React from "react";
 import { View, StyleSheet, TextInput } from "react-native";
 import { Icon, Container, Text, Header, Input, Item } from "native-base";
 import NavigationTab from './FooterTab'
+
 function MainScreen() {
   return (
 
@@ -24,13 +25,7 @@ function MainScreen() {
 }
 
 MainScreen.navigationOptions = {
-  headerLeft: (
-    <Icon type="Entypo" name="location-pin" style={{ paddingLeft: 10 }} />
-  ),
-  title: "현재 주소",
-  headerRight: (
-    <Icon type="FontAwesome" name="sliders" style={{ paddingRight: 10 }} />
-  ),
+  header:null
 };
 
 const style = StyleSheet.create({
