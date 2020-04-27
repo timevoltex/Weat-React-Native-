@@ -30,7 +30,7 @@ const NavigationTab = () => {
       default:
     }
   }
-  const [activeIndex, setActiveIndex] = useState(0);
+  const [activeIndex, setActiveIndex] = useState(1);
 
   const switchIndex = (activeIndex) => {
     setActiveIndex(activeIndex);
