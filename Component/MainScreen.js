@@ -25,7 +25,7 @@ function MainScreen() {
 }
 
 MainScreen.navigationOptions = {
-  header:null
+  headerShown:false
 };
 
 const style = StyleSheet.create({
