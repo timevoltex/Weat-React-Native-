@@ -16,10 +16,14 @@ import {
   Title,
 } from "native-base";
 import Carousel from "react-native-snap-carousel";
+import {AllIcon} from './ImportImage';
+
+
+
 const { width: viewportWidth, height: viewportHeight } = Dimensions.get(
   "window"
 );
-
+let filter = AllIcon.filterInactive;
 let testImage = require("../../assets/1.png");
 let testImage2 = require("../../assets/2.png");
 let logo = require("../../assets/Connple-black.png");
@@ -58,20 +62,19 @@ function Home() {
       </View>
     );
   };
+  console.log(location);
   return (
     <Container>
-      <Header>
-        <Left>
-          <Icon type="Entypo" name="location-pin" style={{ paddingLeft: 10 }} />
+      <Header style={style.header}>
+        <Left style={style.headerLeft}>
+          <Image source={AllIcon.locationInactive} style={style.iconLeft, style.icon} />
         </Left>
-        <Body>
-          <Title>현재 주소</Title>
+        <Body style={{alignItems:'center'}}>
+          <Title style={style.headertitle}>현재 주소</Title>
         </Body>
         <Right>
-          <Icon
-            type="FontAwesome"
-            name="sliders"
-            style={{ paddingRight: 10 }}
+          <Image source={filter}
+            style={style.iconRight, style.icon }
           />
         </Right>
       </Header>
@@ -98,10 +101,8 @@ function Home() {
             >
               이벤트
             </Text>
-            <Icon
-              type="Octicons"
-              name="list-unordered"
-              style={{ color: "#c2c2c2", paddingRight: 10 }}
+            <Image source={AllIcon.listsInactive}
+              style={style.iconRight, style.icon}
             />
           </View>
           <Card>
@@ -162,10 +163,8 @@ function Home() {
             >
               타임세일
             </Text>
-            <Icon
-              type="Octicons"
-              name="list-unordered"
-              style={{ color: "#c2c2c2", paddingRight: 10 }}
+            <Image source={AllIcon.listsInactive}
+              style={style.iconRight, style.icon}
             />
           </View>
           <Carousel
@@ -242,6 +241,24 @@ const style = StyleSheet.create({
     backgroundColor: "#eee",
     alignSelf: "center",
     flexDirection: "row",
+  },
+  header:{
+    backgroundColor: 'transparent',
+  },
+  headertitle:{
+    color:'black'
+  },
+  headerLeft:{
+    flex:1
+  },
+  icon:{
+    width: 50, height:50,
+  },
+  iconLeft:{
+    paddingLeft:10
+  },
+  iconRight:{
+    paddingRight:10
   },
 });
 export default Home;
