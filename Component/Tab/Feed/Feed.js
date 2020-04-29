@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import { StyleSheet, Dimensions, Image } from "react-native";
 import {
   Icon,
@@ -14,11 +14,14 @@ import {
   Right,
   Title,
 } from "native-base";
-import InstaTab from './Feed/InstaTab';
-import PhotoTab from './Feed/PhotoTab';
-import {AllIcon} from './ImportImage';
+import InstaTab from './InstaTab';
+import PhotoTab from './PhotoTab';
+import {AllIcon} from '../ImportImage';
+import SearchBar from '../../SearchBar'
 
 const Feed = () => {
+  const [activeTab, setActiveTab] = useState(0);
+
   return(
   <Container>
     <Header style={header.header}>
@@ -34,17 +37,12 @@ const Feed = () => {
           />
         </Right>
       </Header>
-    <Header hasTabs searchBar rounded style={header.searchBar}>
-        <Item style={header.searchBar}>
-          <Image source={AllIcon.searchInactive} style={header.searchBar,icon.left, {width:30, height:30}}/>
-          <Input placeholder="오늘은 뭘 먹지?" placeholderTextColor={{color:'#E5E5E5'}} style={header.searchBar}/>
-        </Item>
-      </Header>
-      <Tabs locked>
-        <Tab tabStyle={tab.tab} heading={<TabHeading><Icon name="square"/></TabHeading>}>
+      <SearchBar/>
+      <Tabs tabBarUnderlineStyle={{backgroundColor:"#9c48fc"}} locked onChangeTab={({i}) => setActiveTab(i)}>
+        <Tab heading={<TabHeading style={tab.tab}><Icon name="square" style={activeTab === 0 ? {color:'#9C48FC'} : {color:'#e5e5e5'}}/></TabHeading>}>
           <InstaTab/>
         </Tab>
-        <Tab heading={<TabHeading><Icon name="apps"/></TabHeading>}>
+        <Tab heading={<TabHeading style={tab.tab}><Icon name="apps" style={activeTab === 1 ? {color:'#9C48FC'} : {color:'#e5e5e5'}}/></TabHeading>}>
           <PhotoTab/>
         </Tab>
       </Tabs>

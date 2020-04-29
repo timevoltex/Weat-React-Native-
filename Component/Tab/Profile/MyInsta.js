@@ -1,10 +1,18 @@
-import React from 'react';
-import {Text, Image, Dimensions} from 'react-native';
+import React, {useState} from 'react';
+import {Text, Image, Dimensions, TouchableOpacity, StyleSheet} from 'react-native';
 import {Container, Content, Card, CardItem, Body, Left, Right, Icon, Badge} from 'native-base';
+import {AllIcon} from '../ImportImage';
+
 const {width: viewportWidth, height: viewportHeight} = Dimensions.get('window');
 
 let testImage = require('../../../assets/1.png');
 const MyInsta = () => {
+const [liked, setLiked] = useState(false);
+
+const onLike = () => {
+  setLiked(!liked)
+}
+
   return(
         <>
         <Card>
@@ -24,11 +32,13 @@ const MyInsta = () => {
           <CardItem cardBody>
             <Image source={{uri: testImage}} style={{height: viewportWidth, width: viewportWidth, flex:1}}/>
           </CardItem>
-          <CardItem>
+          <CardItem style={{paddingLeft:0}}>
 
-            <Icon name="ios-heart-empty"/>
-            <Icon type="MaterialIcons" name="message"/>
-            <Icon name="ios-bookmark"/>
+          <TouchableOpacity onPress={() => onLike()}>
+            <Image source={liked === true ? AllIcon.likeActive : AllIcon.likeInactive} style={[style.iconRight, style.icon]}/>
+            </TouchableOpacity>
+            <Image source={AllIcon.feedInactive} style={[style.iconRight, style.icon]}/>
+            <Image source={AllIcon.bookmarkInactive} style={ style.icon}/>
             <Body/>
             <Right>
               <Badge style={{backgroundColor:'transparent',borderColor:'black', borderWidth:1}}><Text style={{margin:'auto'}}>#해시태그</Text></Badge>
@@ -57,11 +67,13 @@ const MyInsta = () => {
           <CardItem cardBody>
             <Image source={{uri: testImage}} style={{height: viewportWidth, width: viewportWidth, flex:1}}/>
           </CardItem>
-          <CardItem>
+          <CardItem style={{paddingLeft:0}}>
 
-            <Icon name="ios-heart-empty"/>
-            <Icon type="MaterialIcons" name="message"/>
-            <Icon name="ios-bookmark"/>
+          <TouchableOpacity onPress={() => onLike()}>
+            <Image source={liked === true ? AllIcon.likeActive : AllIcon.likeInactive} style={[style.iconRight, style.icon]}/>
+            </TouchableOpacity>
+            <Image source={AllIcon.feedInactive} style={[style.iconRight, style.icon]}/>
+            <Image source={AllIcon.bookmarkInactive} style={ style.icon}/>
             <Body/>
             <Right>
               <Badge style={{backgroundColor:'transparent',borderColor:'black', borderWidth:1}}><Text style={{margin:'auto'}}>#해시태그</Text></Badge>
@@ -77,3 +89,8 @@ const MyInsta = () => {
     )
 }
 export default MyInsta;
+const style = StyleSheet.create({
+  icon:{height:50, width:50},
+  iconLeft:{paddingLeft:10},
+  iconRight:{marginRight:-10}
+})

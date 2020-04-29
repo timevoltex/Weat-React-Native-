@@ -14,29 +14,24 @@ import {
   CardItem,
 } from "native-base";
 import { Text, Image } from "react-native";
+import {AllIcon} from '../ImportImage';
+import SearchBar from '../../SearchBar';
 
 const OrderList = () => {
   return (
     <Container>
-      <Header>
-        <Left></Left>
-        <Body>
-          <Title>현재 주소</Title>
+      <Header style={{backgroundColor:'transparent'}}>
+        <Left style={{flex:1}}/>
+        <Body style={{alignItems:'center'}}>
+          <Title style={{color:'#000'}}>현재 주소</Title>
         </Body>
         <Right>
-          <Icon
-            type="FontAwesome"
-            name="sliders"
-            style={{ paddingRight: 10 }}
+          <Image source={AllIcon.filterInactive}
+            style={{width:50, height:50, paddingRight: 10 }}
           />
         </Right>
       </Header>
-      <Header searchBar rounded style={{ backgroundColor: "#fff" }}>
-        <Item>
-          <Icon name="ios-search" />
-          <Input placeholder="오늘은 뭘 먹지?" />
-        </Item>
-      </Header>
+      <SearchBar/>
       <Content padder>
         <Card>
           <CardItem style={{ flexDirection: "column", alignItems: "baseline" }}>

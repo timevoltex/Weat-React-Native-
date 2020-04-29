@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import {
   Container,
   Content,
@@ -14,25 +14,28 @@ import {
   Badge,
   Card,
   CardItem,
+  TabHeading,
 } from "native-base";
-import { Text, View } from "react-native";
-import MyInsta from "./ProfileTab/MyInsta";
-import MyPhoto from "./ProfileTab/MyPhoto";
-import Noti from './ProfileTab/Noti';
-import Analyze from './ProfileTab/analyze';
+import { Text, View, Image, StyleSheet } from "react-native";
+import MyInsta from "./MyInsta";
+import MyPhoto from "./MyPhoto";
+import Noti from './Noti';
+import Analyze from './analyze';
+import {AllIcon} from '../ImportImage';
 
 const Profile = () => {
+  const [activeTab, setActiveTab] = useState(0);
   return (
     <Container>
-      <Header hasTabs style={{backgroundColor:'transparent'}}>
+      <Header style={{backgroundColor:'transparent'}}>
         <Left style={{flex:1,}}>
-          <Icon name="edit" type="MaterialIcons" />
+          <Image source={AllIcon.editInactive} style={{width:50, height:50}}/>
         </Left>
         <Body style={{alignItems:'center'}}>
           <Title style={{color:'#000'}}>마이페이지</Title>
         </Body>
         <Right>
-          <Icon type="SimpleLineIcons" name="settings" />
+          <Image source={AllIcon.settingsInactive} style={{width:50, height:50}} />
         </Right>
       </Header>
       <Content>
@@ -60,18 +63,24 @@ const Profile = () => {
             </View>
           </CardItem>
         </Card>
-        <Tabs initialPage={0}>
-          <Tab heading="프로필">
+        <Tabs tabBarUnderlineStyle={tab.tabUnderline} initialPage={activeTab} onChangeTab={({i}) => setActiveTab(i)}>
+          <Tab heading={<TabHeading style={tab.tabHeader}><Text style={activeTab === 0 ? tab.activeText : tab.inactiveText}>프로필</Text></TabHeading>}>
             <MyInsta />
           </Tab>
-          <Tab heading="알림">
+          <Tab heading={<TabHeading style={tab.tabHeader}><Text style={activeTab === 1 ? tab.activeText : tab.inactiveText}>알림</Text></TabHeading>}>
             <Noti/>
           </Tab>
-          <Tab heading="분석"><Analyze/></Tab>
-          <Tab heading="컬렉션"><MyPhoto /></Tab>
+          <Tab heading={<TabHeading style={tab.tabHeader}><Text style={activeTab === 2 ? tab.activeText : tab.inactiveText}>분석</Text></TabHeading>}><Analyze/></Tab>
+          <Tab heading={<TabHeading style={tab.tabHeader}><Text style={activeTab === 3 ? tab.activeText : tab.inactiveText}>컬렉션</Text></TabHeading>}><MyPhoto /></Tab>
         </Tabs>
       </Content>
     </Container>
   );
 };
 export default Profile;
+const tab = StyleSheet.create({
+  tabHeader:{backgroundColor:'#fff'},
+  activeText:{color:"#9c48fc"},
+  inactiveText:{color:"#dadada"},
+  tabUnderline:{backgroundColor:'#9c48fc'}
+})

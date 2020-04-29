@@ -10,6 +10,7 @@ import {
   Badge,
   Content,
 } from "native-base";
+import {AllIcon} from '../ImportImage';
 
 const testImage = require("../../../assets/1.png");
 const Analyze = () => {
@@ -17,7 +18,7 @@ const Analyze = () => {
     <Content padder>
       <View style={style.Container}>
         <Text>해시태그</Text>
-        <Icon name="ios-add-circle-outline" style={{ opacity: 0.2 }} />
+        <Image source={AllIcon.creatInactive} style={{height:30, width:30}} />
       </View>
       <View style={{ flexDirection: "row" }}>
         <Badge
@@ -60,7 +61,7 @@ const Analyze = () => {
       <View style={style.Container}>
         <Text>나와 잘 맞는 친구</Text>
 
-        <Icon name="ios-add-circle-outline" style={{ opacity: 0.2 }} />
+        <Image source={AllIcon.creatInactive} style={{height:30, width:30}} />
       </View>
       <Card>
         <CardItem>
@@ -80,7 +81,7 @@ const Analyze = () => {
       </Card>
       <View style={style.Container}>
         <Text>최애 메뉴</Text>
-        <Icon style={{ opacity: 0.2 }} name="ios-add-circle-outline" />
+        <Image source={AllIcon.creatInactive} style={{height:30, width:30}} />
       </View>
       <Card>
         <CardItem>

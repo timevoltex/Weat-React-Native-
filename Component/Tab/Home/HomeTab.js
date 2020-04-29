@@ -16,7 +16,8 @@ import {
   Title,
 } from "native-base";
 import Carousel from "react-native-snap-carousel";
-import {AllIcon} from './ImportImage';
+import {AllIcon} from '../ImportImage';
+import SearchBar from '../../SearchBar';
 
 
 
@@ -24,18 +25,18 @@ const { width: viewportWidth, height: viewportHeight } = Dimensions.get(
   "window"
 );
 let filter = AllIcon.filterInactive;
-let testImage = require("../../assets/1.png");
-let testImage2 = require("../../assets/2.png");
-let logo = require("../../assets/Connple-black.png");
+let testImage = require("../../../assets/1.png");
+let testImage2 = require("../../../assets/2.png");
+let logo = require("../../../assets/Connple-black.png");
 function Home() {
   const array = [
-    { source: "../../assets/1.png" },
-    { source: "../../assets/2.png" },
-    { source: "../../assets/3.png" },
-    { source: "../../assets/5.png" },
-    { source: "../../assets/6.png" },
-    { source: "../../assets/7.png" },
-    { source: "../../assets/4.png" },
+    { source: "../../../assets/1.png" },
+    { source: "../../../assets/2.png" },
+    { source: "../../../assets/3.png" },
+    { source: "../../../assets/5.png" },
+    { source: "../../../assets/6.png" },
+    { source: "../../../assets/7.png" },
+    { source: "../../../assets/4.png" },
   ];
   const _renderItem = (i) => {
     return (
@@ -78,12 +79,7 @@ function Home() {
           />
         </Right>
       </Header>
-      <Header searchBar rounded style={{ backgroundColor: "#fff" }}>
-        <Item>
-          <Icon name="ios-search" />
-          <Input placeholder="오늘은 뭘 먹지?" />
-        </Item>
-      </Header>
+      <SearchBar/>
       <Content>
         <View
           style={{ width: "100%", height: 100, backgroundColor: "gray" }}
