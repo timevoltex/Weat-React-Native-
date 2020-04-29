@@ -8,11 +8,11 @@ import {
   Content,
 } from "native-base";
 import {Image, StyleSheet} from 'react-native'
-import HomeTab from "./Tab/HomeTab";
-import Add from "./Tab/Add";
-import OrderList from "./Tab/OrderLIst";
-import Feed from "./Tab/Feed";
-import Profile from "./Tab/Profile";
+import HomeTab from "./Tab/Home/HomeTab";
+import Add from "./Tab/Add/Add";
+import OrderList from "./Tab/OrderList/OrderLIst";
+import Feed from "./Tab/Feed/Feed";
+import Profile from "./Tab/Profile/Profile";
 import {AllIcon} from './Tab/ImportImage';
 
 
