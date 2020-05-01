@@ -3,6 +3,8 @@ import React from 'react';
 export const AllIcon = {
   bookmarkActive:require('../../assets/icon/bookmark-01.png'),
   bookmarkInactive:require('../../assets/icon/bookmark-01-01.png'),
+  backActive:require('../../assets/icon/back.png'),
+  backInactive:require('../../assets/icon/back-g.png'),
   creatActive:require('../../assets/icon/creat-01.png'),
   creatInactive:require('../../assets/icon/creat-gray-01.png'),
   editActive:require('../../assets/icon/edit-01.png'),
