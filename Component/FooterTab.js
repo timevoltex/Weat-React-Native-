@@ -1,14 +1,13 @@
 import React, { useState } from "react";
 import {
   Footer,
-  Icon,
+
   FooterTab,
   Button,
-  Container,
-  Content,
+
 } from "native-base";
 import {Image, StyleSheet} from 'react-native'
-import HomeTab from "./Tab/Home/HomeTab";
+import HomeTab from "./Tab/Home/index";
 import Add from "./Tab/Add/Add";
 import OrderList from "./Tab/OrderList/OrderLIst";
 import Feed from "./Tab/Feed/Feed";
@@ -36,7 +35,6 @@ const NavigationTab = () => {
 
   const switchIndex = (activeIndex) => {
     setActiveIndex(activeIndex);
-    console.log(activeIndex);
   };
 
   return (
