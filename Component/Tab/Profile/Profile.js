@@ -74,6 +74,7 @@ const Profile = () => {
           <Tab heading={<TabHeading style={tab.tabHeader}><Text style={activeTab === 3 ? tab.activeText : tab.inactiveText}>컬렉션</Text></TabHeading>}><MyPhoto /></Tab>
         </Tabs>
       </Content>
+  
     </Container>
   );
 };
