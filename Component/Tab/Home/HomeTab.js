@@ -20,7 +20,6 @@ import {AllIcon} from '../ImportImage';
 import SearchBar from '../../SearchBar';
 
 
-
 const { width: viewportWidth, height: viewportHeight } = Dimensions.get(
   "window"
 );
@@ -28,7 +27,7 @@ let filter = AllIcon.filterInactive;
 let testImage = require("../../../assets/1.png");
 let testImage2 = require("../../../assets/2.png");
 let logo = require("../../../assets/Connple-black.png");
-function Home() {
+function Home({navigation: {navigate}}) {
   const array = [
     { source: "../../../assets/1.png" },
     { source: "../../../assets/2.png" },
@@ -102,7 +101,7 @@ function Home() {
             />
           </View>
           <Card>
-            <CardItem>
+            <CardItem onPress={() => navigate('StoreDetail')}>
               <Thumbnail
                 square
                 source={testImage}
@@ -115,7 +114,7 @@ function Home() {
                     width: "100%",
                     display: "flex",
                     justifyContent: "space-between",
-                  }}
+                  }} onPress={() => navigate('StoreDetail')}
                 >
                   <Text>상호명</Text>
                   <Text>기간</Text>
