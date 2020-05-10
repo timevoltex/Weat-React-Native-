@@ -39,7 +39,7 @@ const { width: viewportWidth, height: viewportHeight } = Dimensions.get(
   "window"
 );
 let filter = AllIcon.filterInactive;
-function Home({ navigation}) {
+function Home({navigation:{navigate}}) {
   return (
     <Container>
       <Header hasTabs transparent>
@@ -59,14 +59,14 @@ function Home({ navigation}) {
         </Right>
       </Header>
       <SearchBar />
-      <RenderTab />
+      <RenderTab props={navigate}/>
     </Container>
   );
 }
 
 const RenderTab = ({props}) => {
   return (
-    <Tabs>
+    <Tabs style={{overflow:'scroll'}}>
       <Tab heading="이벤트">
         <EventTab props={props}/>
       </Tab>

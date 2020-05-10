@@ -50,7 +50,7 @@ const EventTab = ({props}) => {
         sale={25}
         price={6000}
         remain={3}
-        navigation={props}
+        props={props}
         />
         <Homefooter/>
       </Content>
@@ -60,7 +60,7 @@ const EventTab = ({props}) => {
 
 export const RenderSale = ({time,cnt, menu, store, addr, sale, price, remain, props}) => (
   <Card>
-    <CardItem button onPress={() => props.navigate('StoreDetail')}>
+    <CardItem button onPress={() => props('StoreDetail')}>
       <Thumbnail
         square
         source={foodImage[0].source}

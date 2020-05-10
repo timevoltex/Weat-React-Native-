@@ -17,7 +17,7 @@ const TimeSale = ({props}) => {
       sale={25}
       price={6000}
       remain={3}
-      props={navigation}
+      props={props}
       />
       <RenderSale 
       time="22:00-23:00"
@@ -28,7 +28,7 @@ const TimeSale = ({props}) => {
       sale={30}
       price={4500}
       remain={5}
-      props={navigation}
+      props={props}
       />
       <RenderSale 
       time="22:00-23:00"
@@ -39,7 +39,7 @@ const TimeSale = ({props}) => {
       sale={18}
       price={7800}
       remain={11}
-      props={navigation}
+      props={props}
       />
       <RenderSale 
       time="22:00-23:00"
@@ -50,7 +50,7 @@ const TimeSale = ({props}) => {
       sale={20}
       price={13000}
       remain={24}
-      props={navigation}
+      props={props}
       />
     </Content>
   )
