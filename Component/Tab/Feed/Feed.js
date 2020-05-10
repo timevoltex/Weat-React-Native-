@@ -37,7 +37,7 @@ const Feed = ({navigation}) => {
         </Right>
       </Header>
       <SearchBar/>
-      <Tabs tabBarUnderlineStyle={{backgroundColor:"#9c48fc"}} locked onChangeTab={({i}) => setActiveTab(i)}>
+      <Tabs tabBarUnderlineStyle={{backgroundColor:"#9c48fc"}} onChangeTab={({i}) => setActiveTab(i)}>
         <Tab heading={<TabHeading style={tab.tab}><Icon name="square" style={activeTab === 0 ? {color:'#9C48FC'} : {color:'#e5e5e5'}}/></TabHeading>}>
           <InstaTab props={navigation}/>
         </Tab>
