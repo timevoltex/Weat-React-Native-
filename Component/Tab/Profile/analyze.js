@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import { View, Text, StyleSheet, Image, TouchableOpacity } from "react-native";
+import { View, Text, StyleSheet, Image, TouchableOpacity, Dimensions } from "react-native";
 import {
   Card,
   CardItem,
@@ -13,12 +13,13 @@ import {
 } from "native-base";
 import {AllIcon} from '../ImportImage';
 import AnalyzeG from './analyzeG';
+const {height:viewportHeight} = Dimensions.get('screen');
 
 const testImage = require("../../../assets/1.png");
 const Analyze = () => {
   const [toggle, setToggle] = useState(true);
   return (
-    <Container>
+    <Container style={{height:viewportHeight-290}}>
 
     <Content padder>
       <View style={style.Container}>

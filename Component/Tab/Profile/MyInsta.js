@@ -32,7 +32,7 @@ const MyInsta = ({ props }) => {
   };
 
   return (
-    // <Container>
+    <Container style={{height:viewportHeight-290}}>
       <Content>
         <Card>
           <CardItem>
@@ -168,7 +168,7 @@ const MyInsta = ({ props }) => {
           </CardItem>
         </Card>
       </Content>
-    // </Container>
+    </Container>
   );
 };
 export default MyInsta;

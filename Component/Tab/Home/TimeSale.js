@@ -1,12 +1,16 @@
 import React from 'react';
-import { Image, StyleSheet, Text, View } from 'react-native';
+import { Image, StyleSheet, Text, View, Dimensions } from 'react-native';
 import { Container, Left, Button, Body, Right, Header, Title, Content, Card, CardItem, Thumbnail } from 'native-base';
 import { AllIcon, Back, Filter } from '../ImportImage';
 import Searchbar from '../../SearchBar';
 import {RenderSale} from './EventTab';
+import Footer from './footer'
+const {height:viewportHeight} = Dimensions.get('window');
 
 const TimeSale = ({props}) => {
   return(
+    <Container style={{height:viewportHeight-200}}>
+
     <Content>
       <RenderSale 
       time="22:00-23:00"
@@ -52,7 +56,9 @@ const TimeSale = ({props}) => {
       remain={24}
       props={props}
       />
+      <Footer/>
     </Content>
+      </Container>
   )
 }
 export default TimeSale

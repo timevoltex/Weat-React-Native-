@@ -11,7 +11,7 @@ const IntaTab = ({props}) => {
   const [liked, setLiked] = useState(false);
 
   return(
-    <Container style={{paddingBottom:200}}>
+    <Container style={{height:viewportHeight-200}}>
       <Content>
         {foodImage.map((item, i) => (
         <Card key={i}>

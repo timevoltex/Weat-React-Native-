@@ -1,5 +1,5 @@
 import React from "react";
-import { Text } from "react-native";
+import { Text, Dimensions } from "react-native";
 import {
   Container,
   Content,
@@ -14,10 +14,11 @@ import {
 } from "native-base";
 import {foodImage} from '../ImportImage';
 import Homefooter from './footer';
+const {height:viewportHeight} = Dimensions.get('screen');
 
 const EventTab = ({props}) => {
   return (
-    <Container>
+    <Container style={{height:viewportHeight-200}}>
       <Content>
         <CardContent
           how="방문리뷰"
@@ -54,7 +55,7 @@ const EventTab = ({props}) => {
         />
         <Homefooter/>
       </Content>
-    </Container>
+      </Container>
   );
 };export default EventTab;
 
