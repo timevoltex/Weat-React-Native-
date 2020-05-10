@@ -1,19 +1,20 @@
 import React, {useState} from 'react';
 import {Text, Image, Dimensions, StyleSheet, TouchableOpacity} from 'react-native';
 import {Container, Content, Card, CardItem, Body, Left, Right, Icon, Badge} from 'native-base';
-import {AllIcon} from '../ImportImage';
+import {AllIcon, Heart, Feed, Bookmark, foodImage} from '../ImportImage';
 
 const {width: viewportWidth, height: viewportHeight} = Dimensions.get('window');
 
 
 let testImage = require('../../../assets/1.png');
-const IntaTab = () => {
+const IntaTab = ({props}) => {
   const [liked, setLiked] = useState(false);
 
   return(
     <Container style={{paddingBottom:200}}>
       <Content>
-        <Card>
+        {foodImage.map((item, i) => (
+        <Card key={i}>
           <CardItem>
             <Left>
               <Icon name="ios-person"/>
@@ -28,18 +29,18 @@ const IntaTab = () => {
             </Right>
           </CardItem>
           <CardItem cardBody>
-            <Image source={{uri: testImage}} style={{height: viewportWidth, width: viewportWidth, flex:1}}/>
+            <Image source={item.source} style={{height: viewportWidth, width: viewportWidth, flex:1}}/>
           </CardItem>
           <CardItem style={{paddingLeft:0}}>
             <TouchableOpacity onPress={() => setLiked(!liked)}>
-              <Image source={liked === true ? AllIcon.likeActive : AllIcon.likeInactive} style={[style.iconRight, style.icon]}/>
+              <Heart fill={liked === true ? "#9943fc" :"#c2c2c2"} style={[style.iconRight, style.icon]}/>
             </TouchableOpacity>
-            <Image source={AllIcon.feedInactive} style={[style.iconRight, style.icon]}/>
-            <Image source={AllIcon.bookmarkInactive} style={ style.icon}/>
+            <Feed fill="#c2c2c2" style={[style.iconRight, style.icon]}/>
+            <Bookmark fill="#c2c2c2" style={ style.icon}/>
 
             <Body/>
             <Right>
-              <Badge style={{backgroundColor:'transparent',borderRadius:8,borderColor:'#9c48fc', borderWidth:1}}><Text style={{margin:'auto', color:'#9c48fc'}}>#해시태그</Text></Badge>
+              <Badge style={{backgroundColor:'transparent',borderRadius:8,borderColor:'#9c48fc', borderWidth:1}}><Text onPress={()=> props.navigate('HastTag')} style={{margin:'auto', color:'#9c48fc'}}>#해시태그</Text></Badge>
             </Right>
           </CardItem>
           <CardItem style={{flexDirection:'column'}}>
@@ -48,7 +49,8 @@ const IntaTab = () => {
             <Text><Text style={{fontWeight:'bold'}}>Lorem</Text> ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod...</Text>
           </CardItem>
         </Card>
-        <Card>
+        ))}
+        {/* <Card>
           <CardItem>
             <Left>
               <Icon name="ios-person"/>
@@ -72,7 +74,7 @@ const IntaTab = () => {
             <Image source={AllIcon.bookmarkInactive} style={ style.icon}/>
             <Body/>
             <Right>
-            <Badge style={{backgroundColor:'transparent',borderRadius:8,borderColor:'#9c48fc', borderWidth:1}}><Text style={{margin:'auto', color:'#9c48fc'}}>#해시태그</Text></Badge>
+  <Badge  style={{backgroundColor:'transparent',borderRadius:8,borderColor:'#9c48fc', borderWidth:1}}><Text onPress={()=> props.navigate('HashTag')} style={{margin:'auto', color:'#9c48fc'}}>{text}</Text></Badge>
             </Right>
           </CardItem>
           <CardItem style={{flexDirection:'column'}}>
@@ -80,7 +82,7 @@ const IntaTab = () => {
             <Text><Text style={{fontWeight:'bold'}}>Lorem</Text> ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod...</Text>
             <Text><Text style={{fontWeight:'bold'}}>Lorem</Text> ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod...</Text>
           </CardItem>
-        </Card>
+        </Card> */}
       </Content>
     </Container>
     )

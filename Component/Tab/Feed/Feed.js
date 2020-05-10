@@ -16,34 +16,33 @@ import {
 } from "native-base";
 import InstaTab from './InstaTab';
 import PhotoTab from './PhotoTab';
-import {AllIcon} from '../ImportImage';
+import {AllIcon, Location, Filter} from '../ImportImage';
 import SearchBar from '../../SearchBar'
 
-const Feed = () => {
+const Feed = ({navigation}) => {
   const [activeTab, setActiveTab] = useState(0);
 
   return(
   <Container>
-    <Header style={header.header}>
+    <Header transparent>
         <Left style={header.headerLeft}>
-          <Image source={AllIcon.locationInactive} style={icon.iconLeft, icon.icon} />
+          <Location fill="#c2c2c2" style={icon.iconLeft, icon.icon} />
         </Left>
         <Body style={header.headerTitle}>
-          <Title style={{color:'#000'}}>현재 주소</Title>
+          <Title style={{color:'#000'}}><Image source={AllIcon.weat} style={{width:66, height:22}}/></Title>
         </Body>
         <Right>
-          <Image source={AllIcon.filterInactive}
-            style={icon.iconRight, icon.icon}
+          <Filter fill="#c2c2c2" style={icon.iconRight, icon.icon}
           />
         </Right>
       </Header>
       <SearchBar/>
       <Tabs tabBarUnderlineStyle={{backgroundColor:"#9c48fc"}} locked onChangeTab={({i}) => setActiveTab(i)}>
         <Tab heading={<TabHeading style={tab.tab}><Icon name="square" style={activeTab === 0 ? {color:'#9C48FC'} : {color:'#e5e5e5'}}/></TabHeading>}>
-          <InstaTab/>
+          <InstaTab props={navigation}/>
         </Tab>
         <Tab heading={<TabHeading style={tab.tab}><Icon name="apps" style={activeTab === 1 ? {color:'#9C48FC'} : {color:'#e5e5e5'}}/></TabHeading>}>
-          <PhotoTab/>
+          <PhotoTab props={navigation}/>
         </Tab>
       </Tabs>
   </Container>

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, } from "react";
 import {
   Footer,
 
@@ -10,9 +10,9 @@ import {Image, StyleSheet} from 'react-native'
 import HomeTab from "./Tab/Home/index";
 import Add from "./Tab/Add/Add";
 import OrderList from "./Tab/OrderList/OrderLIst";
-import Feed from "./Tab/Feed/Feed";
-import Profile from "./Tab/Profile/Profile";
-import {AllIcon} from './Tab/ImportImage';
+import Feed from "./Tab/Feed/index";
+import Profile from "./Tab/Profile/index";
+import {Home, Feed as FeedIcon, Plus, OrderList as OrderListIcon, Mypage} from './Tab/ImportImage';
 
 
 const NavigationTab = () => {
@@ -44,19 +44,19 @@ const NavigationTab = () => {
       <Footer >
         <FooterTab style={{backgroundColor:'#fff'}}>
           <Button style={{backgroundColor:"#fff"}} onPress={() => switchIndex(0)} active={activeIndex === 0}>
-            <Image source={activeIndex === 0? AllIcon.homeActive : AllIcon.homeInactive} style={style.icon}/>
+            <Home fill={activeIndex === 0? '#9943fc' : '#c2c2c2'} style={style.icon}/>
           </Button>
           <Button style={{backgroundColor:"#fff"}} onPress={() => switchIndex(1)} active={activeIndex === 1}>
-            <Image source={activeIndex === 1? AllIcon.feedActive : AllIcon.feedInactive} style={style.icon}/>
+            <FeedIcon fill={activeIndex === 1? '#9943fc' :  '#c2c2c2'} style={style.icon}/>
           </Button>
           <Button style={{backgroundColor:"#fff"}} onPress={() => switchIndex(2)} active={activeIndex === 2}>
-            <Image source={activeIndex === 2? AllIcon.creatActive : AllIcon.creatInactive} style={style.icon}/>
+            <Plus fill={activeIndex === 2?  '#9943fc' :  '#c2c2c2'} style={style.icon}/>
           </Button>
           <Button style={{backgroundColor:'#fff'}} onPress={() => switchIndex(3)} active={activeIndex === 3}>
-            <Image source={activeIndex === 3? AllIcon.listActive : AllIcon.listInactive} style={style.icon}/>
+            <OrderListIcon fill={activeIndex === 3? '#9943fc' : '#c2c2c2' } style={style.icon}/>
           </Button>
           <Button style={{backgroundColor:'#fff'}} onPress={() => switchIndex(4)} active={activeIndex === 4}>
-            <Image source={activeIndex === 4 ? AllIcon.mypageActive : AllIcon.mypageInactive} style={style.icon}/>
+            <Mypage fill={activeIndex === 4 ?  '#9943fc' : '#c2c2c2' } style={style.icon}/>
           </Button>
         </FooterTab>
       </Footer>

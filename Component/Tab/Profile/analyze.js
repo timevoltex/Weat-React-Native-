@@ -1,5 +1,5 @@
-import React from "react";
-import { View, Text, StyleSheet, Image } from "react-native";
+import React, {useState} from "react";
+import { View, Text, StyleSheet, Image, TouchableOpacity } from "react-native";
 import {
   Card,
   CardItem,
@@ -9,18 +9,47 @@ import {
   Icon,
   Badge,
   Content,
+  Container,
 } from "native-base";
 import {AllIcon} from '../ImportImage';
+import AnalyzeG from './analyzeG';
 
 const testImage = require("../../../assets/1.png");
 const Analyze = () => {
+  const [toggle, setToggle] = useState(true);
   return (
+    <Container>
+
     <Content padder>
       <View style={style.Container}>
         <Text>해시태그</Text>
-        <Image source={AllIcon.creatInactive} style={{height:30, width:30}} />
+        <TouchableOpacity onPress={() => setToggle(!toggle)}>
+          <Image source={toggle === true ? AllIcon.creatInactive : AllIcon.creatActive} style={{height:30, width:30}} />
+        </TouchableOpacity>
       </View>
-      <View style={{ flexDirection: "row" }}>
+     {toggle === true ? <AnalyzeN/> : <AnalyzeG/>}
+    </Content>
+    </Container>
+  );
+};
+export default Analyze;
+
+const style = StyleSheet.create({
+  Container: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+  },
+  Percent: {
+    backgroundColor: "transparent",
+    borderWidth: 0,
+  },
+});
+
+const AnalyzeN = () => {
+  return(
+    <>
+     <View style={{ flexDirection: "row" }}>
         <Badge
           style={{
             backgroundColor: "transparent",
@@ -99,19 +128,6 @@ const Analyze = () => {
           </Right>
         </CardItem>
       </Card>
-    </Content>
-  );
-};
-export default Analyze;
-
-const style = StyleSheet.create({
-  Container: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-  },
-  Percent: {
-    backgroundColor: "transparent",
-    borderWidth: 0,
-  },
-});
+    </>
+  )
+}

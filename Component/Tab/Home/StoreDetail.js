@@ -12,7 +12,7 @@ import {
   ListItem,
 } from "native-base";
 import { Image, StyleSheet, View, Dimensions, Text } from "react-native";
-import { AllIcon } from "../ImportImage";
+import { AllIcon, Back, List as ListIcon } from "../ImportImage";
 
 const { width: viewportWidth, height: viewportHeight } = Dimensions.get(
   "window"
@@ -24,15 +24,15 @@ function StoreDetail({ navigation }) {
       <Header style={style.header}>
         <Left style={style.headerLeft}>
           <Button style={{paddingLeft:0}} transparent onPress={() => navigation.goBack()}>
-            <Image source={AllIcon.backInactive} style={style.icon} />
+            <Back fill="#c2c2c2" style={style.icon} />
           </Button>
         </Left>
         <Body style={{ alignItems: "center" }}>
           <Title style={style.headertitle}>상호명</Title>
         </Body>
         <Right>
-          <Image
-            source={AllIcon.listsInactive}
+          <ListIcon
+            fill="#c2c2c2"
             style={{ height: 50, width: 50, paddingRight: 10 }}
           />
         </Right>
