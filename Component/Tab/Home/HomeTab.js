@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import {
   View,
   StyleSheet,
@@ -20,6 +20,7 @@ import {
   Title,
   Tab,
   Tabs,
+  TabHeading,
 } from "native-base";
 import Carousel from "react-native-snap-carousel";
 import {
@@ -40,9 +41,10 @@ const { width: viewportWidth, height: viewportHeight } = Dimensions.get(
 );
 let filter = AllIcon.filterInactive;
 function Home({navigation:{navigate}}) {
+  const [aciveTab, setActiveTab ] = useState(0);
   return (
     <Container>
-      <Header hasTabs transparent>
+      <Header  transparent>
         <Left style={style.headerLeft}>
           <Location
             fill="#c2c2c2"
@@ -59,14 +61,24 @@ function Home({navigation:{navigate}}) {
         </Right>
       </Header>
       <SearchBar />
-      <RenderTab props={navigate}/>
+      <Tabs onChangeTab={({i}) => setActiveTab(i)}>
+      <Tab heading={<TabHeading><Text>이벤트</Text></TabHeading>}>
+        <EventTab props={navigate}/>
+      </Tab>
+      <Tab heading={<TabHeading><Text>타임세일</Text></TabHeading>}>
+        <TimeSale props={navigate} />
+      </Tab>
+      <Tab heading={<TabHeading><Text>랭킹</Text></TabHeading>}>
+        <Text>This is RankingTab</Text>
+      </Tab>
+    </Tabs>
     </Container>
   );
 }
 
 const RenderTab = ({props}) => {
   return (
-    <Tabs style={{overflow:'scroll'}}>
+    <Tabs tabBgColor="transparent">
       <Tab heading="이벤트">
         <EventTab props={props}/>
       </Tab>
