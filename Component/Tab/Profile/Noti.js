@@ -5,7 +5,7 @@ import {Container, Content, Icon, Card, CardItem,  Right, Left, Body} from 'nati
 const testImage = require('../../../assets/1.png');
 const Noti = () => {
   return(
-
+    
           <Card>
             <CardItem>
               <Left>
