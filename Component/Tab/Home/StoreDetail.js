@@ -10,6 +10,9 @@ import {
   Right,
   List,
   ListItem,
+  Footer,
+  Badge,
+  Fab,
 } from "native-base";
 import { Image, StyleSheet, View, Dimensions, Text } from "react-native";
 import { AllIcon, Back, List as ListIcon } from "../ImportImage";
@@ -23,7 +26,7 @@ function StoreDetail({ navigation }) {
     <Container>
       <Header style={style.header}>
         <Left style={style.headerLeft}>
-          <Button style={{paddingLeft:0}} transparent onPress={() => navigation.goBack()}>
+          <Button style={{ paddingLeft: 0 }} transparent onPress={() => navigation.goBack()}>
             <Back fill="#c2c2c2" style={style.icon} />
           </Button>
         </Left>
@@ -68,7 +71,7 @@ function StoreDetail({ navigation }) {
             <Text>잔여 물량</Text>
           </Text>
         </View>
-        <View style={{backgroundColor: "#f2f2f2" }}>
+        <View style={{ backgroundColor: "#f2f2f2" }}>
           <List>
             <ListItem itemHeader first>
               <Text>상세정보</Text>
@@ -96,24 +99,24 @@ function StoreDetail({ navigation }) {
               </Text>
             </ListItem>
             <ListItem itemHeader first>
-                <Text>위치</Text>
+              <Text>위치</Text>
             </ListItem>
-              <ListItem last>
+            <ListItem last>
               <View
-          style={{
-            width: viewportWidth-36,
-            height: viewportWidth-36,
-            backgroundColor: "#DCDCDC",
-          }}
-        >
+                style={{
+                  width: viewportWidth - 36,
+                  height: viewportWidth - 36,
+                  backgroundColor: "#DCDCDC",
+                }}
+              >
                 <Text>naverMap 추가 예정</Text>
-                </View>
-              </ListItem>
-              <ListItem itemHeader first>
-                <Text>타임세일 이용방법</Text>
-              </ListItem>
-              <ListItem last>
-                <Text>
+              </View>
+            </ListItem>
+            <ListItem itemHeader first>
+              <Text>타임세일 이용방법</Text>
+            </ListItem>
+            <ListItem last>
+              <Text>
                 Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
                 diam nonumy eirmod tempor invidunt ut labore et dolore magna
                 aliquyam erat, sed diam voluptua. At vero eos et accusam et
@@ -121,9 +124,13 @@ function StoreDetail({ navigation }) {
                 takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum
                 dolor sit amet, consetetur
                 </Text>
-              </ListItem>
+            </ListItem>
           </List>
         </View>
+        <Button onPress={() => navigation.navigate('OrderPage')}
+          style={[style.boxShadow,{ position: 'sticky', width: '90%', height: 50, borderRadius: 30, backgroundColor: '#9c48fc', bottom: 10, left: '5%' }]}>
+          <Text style={{alignSelf:'center', marginHorizontal:'auto', color:'white', fontSize:20}}>예약하기</Text>
+        </Button>
       </Content>
     </Container>
   );
@@ -157,4 +164,15 @@ const style = StyleSheet.create({
   iconRight: {
     paddingRight: 10,
   },
+  boxShadow: {
+    shadowColor: "#000",
+    shadowOffset: {
+      width: -5,  //x-position
+      height: 5,  //y-position
+    },
+    shadowOpacity: 0.4, //opacity
+    shadowRadius: 4.65, //blur
+
+    elevation: 7, // This adds a drop shadow to the item and affects z-order for overlapping views
+  }
 });
