@@ -19,7 +19,7 @@ const {height:viewportHeight} = Dimensions.get('screen');
 const EventTab = ({props}) => {
   return (
     <Container style={{height:viewportHeight-200}}>
-      <Content>
+      <Content padder>
         <CardContent
           how="방문리뷰"
           store="맛찬들"
@@ -49,7 +49,7 @@ const EventTab = ({props}) => {
         store="청미래 닭갈비"
         addr="춘천시 석사동 198-3"
         sale={25}
-        price={6000}
+        price={8000}
         remain={3}
         props={props}
         />
@@ -59,9 +59,11 @@ const EventTab = ({props}) => {
   );
 };export default EventTab;
 
-export const RenderSale = ({time,cnt, menu, store, addr, sale, price, remain, props}) => (
-  <Card>
-    <CardItem button onPress={() => props('StoreDetail')}>
+export const RenderSale = ({time,cnt, menu, store, addr, sale, price, remain, props}) => {
+  const aftersale = price*((100-sale)/100);
+    return(
+  <Card style={{borderRadius:5}}>
+    <CardItem cardBody button onPress={() => props('StoreDetail', {saleprice:aftersale, store:store, time:time,remain:remain, addr:addr,price:price, sale:sale, menu:menu, cnt:cnt})}>
       <Thumbnail
         square
         source={foodImage[0].source}
@@ -69,36 +71,36 @@ export const RenderSale = ({time,cnt, menu, store, addr, sale, price, remain, pr
         
       />
       <RendertimeBadge remain={remain}/>
-      <Body style={{ paddingLeft: 10, alignSelf: "center" }}>
+      <Body style={{ paddingHorizontal: 10, alignSelf: "center" }}>
         <Text
           style={{
-            fontSize: 14,
+            fontSize: 12,
             width: "100%",
             display: "flex",
             justifyContent: "space-between",
           }}
         >
-          <Text>{time}</Text>
-          <Text>{cnt}개 남음</Text>
+          <Text style={{color:'#707070'}}>{time}</Text>
+          <Text style={{color:'#ccc'}}>{cnt}개 남음</Text>
         </Text>
-        <Text style={{ fontSize: 14 }}>{menu}</Text>
+        <Text style={{ fontSize: 14, fontWeight:'bold' }}>{menu}</Text>
         <Text style={{ fontSize: 14 }}>{store}</Text>
         <Text>{addr}</Text>
         <Text
           style={{
-            fontSize: 14,
+            fontSize: 20,
             width: "100%",
             display: "flex",
             justifyContent: "space-between",
           }}
         >
-          <Text>{sale}%</Text>
-          <Text>{price}원</Text>
+          <Text style={{color:'#707070'}}>{sale}%</Text>
+          <Text style={{color:'#9943fc'}}>{price*((100-sale)/100)}원</Text>
         </Text>
       </Body>
     </CardItem>
   </Card>
-);
+)};
 
 const RenderMore = () => (
   <Button transparent style={{ width: "100%", borderWidth: 0.5 }}>
@@ -106,7 +108,7 @@ const RenderMore = () => (
   </Button>
 );
 const RendertimeBadge = ({remain}) => (
-  <Badge style={{transform:[{translateY:10}, {translateX:5}], width:"fit-content", height:21, position:'absolute', backgroundColor:'#9943fc'}}><Text style={{alignSelf:'center',fontSize:11,color:"#fff"}}>{remain}분</Text></Badge>
+  <Badge style={{transform:[{translateY:10}, {translateX:5}], width:"10%", height:21, position:'absolute', backgroundColor:'#9943fc'}}><Text style={{alignSelf:'center',fontSize:11,color:"#fff"}}>{remain}분</Text></Badge>
 
 )
 const CardContent = ({ how, store, content, date, reward }) => {
@@ -117,15 +119,15 @@ const CardContent = ({ how, store, content, date, reward }) => {
           <Icon name="ios-person" />
           <Body>
             <Text>
-              <Text>{how}</Text> | {store}
+              <Text style={{color:'#9c48fc'}}>{how}</Text> | {store}
             </Text>
-            <Text>{content}</Text>
-            <Text>{date}</Text>
+            <Text style={{fontWeight:'bold'}}>{content}</Text>
+            <Text style={{color:"#dadada"}}>{date}</Text>
           </Body>
         </Left>
       </CardItem>
-      <CardItem>
-        <Text>{reward}</Text>
+      <CardItem style={{backgroundColor:'#9c48fc'}}>
+        <Text style={{color:"#fff", fontWeight:'bold', marginHorizontal:'auto'}}>{reward}</Text>
       </CardItem>
     </Card>
   );
