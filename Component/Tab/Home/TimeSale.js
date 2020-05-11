@@ -19,7 +19,7 @@ const TimeSale = ({props}) => {
       store="청미래 닭갈비"
       addr="춘천시 석사동 198-3"
       sale={25}
-      price={6000}
+      price={8000}
       remain={3}
       props={props}
       />
