@@ -22,54 +22,50 @@ import {
   Tabs,
   TabHeading,
 } from "native-base";
-import Carousel from "react-native-snap-carousel";
 import {
   AllIcon,
-  foodImage,
   Location,
-  Filter,
-  List,
-  Locationmark,
   Gps,
 } from "../ImportImage";
 import SearchBar from "../../SearchBar";
 import EventTab from "./EventTab";
 import TimeSale from "./TimeSale";
+import Ranking from "./Ranking";
 
 const { width: viewportWidth, height: viewportHeight } = Dimensions.get(
   "window"
 );
 let filter = AllIcon.filterInactive;
 function Home({navigation:{navigate}}) {
-  const [aciveTab, setActiveTab ] = useState(0);
+  const [activeTab, setActiveTab ] = useState(0);
   return (
     <Container>
       <Header  transparent>
-        <Left style={style.headerLeft}>
+        <Left style={headerStyle.headerLeft}>
           <Location
             fill="#c2c2c2"
-            width={28}
-            height={28}
-            style={style.iconLeft}
+            width={18}
+            height={24}
+            style={headerStyle.iconLeft}
           />
         </Left>
-        <Body style={{ alignItems: "center" }}>
-          <Title style={style.headertitle}>현재 주소</Title>
+        <Body style={headerStyle.headerBody}>
+          <Title style={headerStyle.headertitle}>현재 주소</Title>
         </Body>
         <Right>
-          <Gps width={28} height={28} fill="#c2c2c2" style={style.iconRight} />
+          <Gps width={24} height={24 } fill="#c2c2c2" style={headerStyle.iconRight} />
         </Right>
       </Header>
       <SearchBar />
-      <Tabs onChangeTab={({i}) => setActiveTab(i)}>
-      <Tab heading={<TabHeading><Text>이벤트</Text></TabHeading>}>
+      <Tabs style={tabStyle.tabs} tabBarUnderlineStyle={tabStyle.tabUnder} onChangeTab={({i}) => setActiveTab(i)}>
+      <Tab tabStyle={tabStyle.tabs}  heading={<TabHeading style={tabStyle.tabHeading}><Text style={activeTab === 0 ? tabStyle.tabActive : tabStyle.tabInActive}>이벤트</Text></TabHeading>}>
         <EventTab props={navigate}/>
       </Tab>
-      <Tab heading={<TabHeading><Text>타임세일</Text></TabHeading>}>
+      <Tab heading={<TabHeading style={tabStyle.tabHeading}><Text style={activeTab === 1 ? tabStyle.tabActive : tabStyle.tabInActive}>타임세일</Text></TabHeading>}>
         <TimeSale props={navigate} />
       </Tab>
-      <Tab heading={<TabHeading><Text>랭킹</Text></TabHeading>}>
-        <Text>This is RankingTab</Text>
+      <Tab heading={<TabHeading style={tabStyle.tabHeading}><Text style={activeTab === 2 ? tabStyle.tabActive : tabStyle.tabInActive}>랭킹</Text></TabHeading>}>
+        <Ranking />
       </Tab>
     </Tabs>
     </Container>
@@ -86,28 +82,29 @@ const RenderTab = ({props}) => {
         <TimeSale props={props} />
       </Tab>
       <Tab heading="랭킹">
-        <Text>This is RankingTab</Text>
+        <Ranking props={props}/>
       </Tab>
     </Tabs>
   );
 };
 
-const style = StyleSheet.create({
-  container: {
-    width: "100%",
-    padding: 10,
-    backgroundColor: "#eee",
-    alignSelf: "center",
-    flexDirection: "row",
-  },
+export const headerStyle= StyleSheet.create({
   header: {
     backgroundColor: "transparent",
   },
   headertitle: {
     color: "black",
+    fontSize:16
   },
+
   headerLeft: {
     flex: 1,
+  },
+  headerBack:{
+    paddingLeft:0
+  },
+  headerBody:{
+    alignItems:'center'
   },
   icon: {
     width: 50,
@@ -119,7 +116,26 @@ const style = StyleSheet.create({
   iconRight: {
     paddingRight: 10,
   },
-});
+})
+
+export const tabStyle=StyleSheet.create({
+  tabs:{
+    backgroundColor:'transparent'
+  },
+  tabUnder:{
+    backgroundColor:'#9943fc'
+  },
+  tabActive:{
+    color:'#9943fc'
+  },
+  tabInActive:{
+    color:'#dadada'
+  }, 
+  tabHeading:{
+    backgroundColor:'#fff'
+  },
+
+})
 export default Home;
 
 {
