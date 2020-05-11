@@ -8,7 +8,7 @@ const SearchBar = () => {
     <Header hasTabs searchBar rounded transparent>
         <Item style={header.searchBar}>
           <Search fill="#c2c2c2" style={icon.iconLeft}/>
-          <Input placeholder="가게명, 메뉴명으로 검색해보세요" placeholderTextColor={{color:'#E5E5E5'}} style={[header.searchBar, header.placeholder]}/>
+          <Input placeholder="가게명, 메뉴명으로 검색해보세요" placeholderTextColor='#e5e5e5' style={[header.searchBar, header.placeholder]}/>
         </Item>
       </Header>
   )
