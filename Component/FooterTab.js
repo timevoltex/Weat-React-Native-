@@ -67,6 +67,6 @@ export default NavigationTab;
 
 const style= StyleSheet.create({
   icon:{
-    width:50, height:50
+    width:22, height:22
   }
 })
