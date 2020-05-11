@@ -6,7 +6,7 @@ import HashTag from '../Feed/Hashtag';
 
 
 const ProfileNavigation = createStackNavigator({
-  Main:{screen:Profile, navigationOptions:{header:null}},
-  HashTag:{screen:HashTag, navigationOptions:{header:null}}
+  Main:{screen:Profile, navigationOptions:{headerShown:false}},
+  HashTag:{screen:HashTag, navigationOptions:{headerShown:false}}
 })
 export default createAppContainer(ProfileNavigation)

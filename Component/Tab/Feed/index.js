@@ -7,9 +7,9 @@ import InstaPage from './InstaTab';
 import MenuInsta from './MenuInsta';
 
 const FeedPage = createStackNavigator({
-    Main:{screen: Feed, navigationOptions:{header:null}},
-    HashTag:{screen: HashTag, navigationOptions:{header:null}},
+    Main:{screen: Feed, navigationOptions:{headerShown:false}},
+    HashTag:{screen: HashTag, navigationOptions:{headerShown:false}},
     // InstaPage:{screen:InstaPage},
-    MenuInsta:{screen:MenuInsta, navigationOptions:{header:null}},
+    MenuInsta:{screen:MenuInsta, navigationOptions:{headerShown:false}},
 })
 export default createAppContainer(FeedPage);
